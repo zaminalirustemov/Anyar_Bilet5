@@ -1,0 +1,52 @@
+﻿@model Team
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="pic" style="width:150px"><img style="max-width:100%" src="~/uploads/team/@Model.ImageName" class="img-fluid" alt=""></div>
+        <div class="mb-3">
+            <label asp-for="ImageFile" class="form-label">Image</label>
+            <input asp-for="ImageFile" class="form-control" placeholder="Image">
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+        <select asp-for="PositionId" class="form-select" aria-label="Default select example">
+            @foreach (Position position in ViewBag.Position)
+            {
+                <option value="@position.Id">@position.Name</option>
+
+            }
+        </select>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Position Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Position Name">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">Description</label>
+            <input asp-for="Description" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="TwUrl" class="form-label">Twitter Url</label>
+            <input asp-for="TwUrl" class="form-control" placeholder="Twitter Url">
+            <span asp-validation-for="TwUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="FbUrl" class="form-label">Facebook Url</label>
+            <input asp-for="FbUrl" class="form-control" placeholder="Facebook Url">
+            <span asp-validation-for="FbUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="InstUrl" class="form-label">Instagram Url</label>
+            <input asp-for="InstUrl" class="form-control" placeholder="Instagram Url">
+            <span asp-validation-for="InstUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="InUrl" class="form-label">LinkedIn Url</label>
+            <input asp-for="InUrl" class="form-control" placeholder="LinkInUrl">
+            <span asp-validation-for="InUrl" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a asp-action="index" asp-controller="team" class="btn btn-outline-dark">Cancel</a>
+    </form>
+</div>

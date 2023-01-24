@@ -1,0 +1,31 @@
+﻿@model List<Position>
+@{
+    int count = 0;
+}
+<div class="container">
+    <h2>Positon/Table</h2>
+    <a style="margin-top:10px" asp-action="create" asp-controller="positon" class="btn btn-success">Create</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Position position in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@position.Name</td>
+                    <td>
+                        <a asp-action="update" asp-controller="positon" asp-route-id="@position.Id" class="btn btn-outline-primary">Update</a>
+                        <a asp-action="softdelete" asp-controller="positon" asp-route-id="@position.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

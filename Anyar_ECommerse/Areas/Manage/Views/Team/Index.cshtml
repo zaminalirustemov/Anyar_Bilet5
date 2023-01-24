@@ -1,0 +1,39 @@
+﻿@model List<Team>
+@{
+    int count = 0;
+}
+<div class="container">
+    <h2>Team/Table</h2>
+    <a style="margin-top:10px" asp-action="create" asp-controller="team" class="btn btn-success">Create</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Image</th>
+                <th scope="col">Position</th>
+                <th scope="col">Fullname</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Team teamMember in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <th>
+                        <div class="pic" style="width:150px"><img style="max-width:100%" src="~/uploads/team/@teamMember.ImageName" class="img-fluid" alt=""></div>
+                    </th>
+                    <th>@teamMember.Position.Name</th>
+                    <td>@teamMember.Name</td>
+                    <td>@teamMember.Description</td>
+                    <td>
+                        <a asp-action="update" asp-controller="team" asp-route-id="@teamMember.Id" class="btn btn-outline-primary">Update</a>
+                        <a asp-action="softdelete" asp-controller="team" asp-route-id="@teamMember.Id" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
